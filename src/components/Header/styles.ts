@@ -23,7 +23,7 @@ export const HeaderContent = styled.div`
     color: ${cores.laranja};
     font-weight: bold;
     font-size: 36px;
-    max-width: 540px;
+    max-width: 560px;
     text-align: center;
     line-height: 42px;
     margin-bottom: 42px;

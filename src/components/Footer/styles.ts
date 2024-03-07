@@ -8,6 +8,7 @@ export const FooterDiv = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 
   p {
     margin-bottom: 40px;
@@ -30,4 +31,12 @@ export const SocialMedia = styled.div`
     width: 24px;
     margin-bottom: 80px;
   }
+`
+
+export const FooterInfo = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
