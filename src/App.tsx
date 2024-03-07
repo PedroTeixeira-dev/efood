@@ -1,8 +1,12 @@
+import Header from './components/Header'
+import EstiloGlobal from './styles'
+
 function App() {
   return (
-    <div>
-      <h1>ola mundo</h1>
-    </div>
+    <>
+      <EstiloGlobal />
+      <Header />
+    </>
   )
 }
 
