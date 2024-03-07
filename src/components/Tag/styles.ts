@@ -14,6 +14,6 @@ export const Tag = styled.div`
     font-size: 12px;
     font-weight: bold;
     line-height: 14px;
-    margin: 0;
+    margin-bottom: 0;
   }
 `
