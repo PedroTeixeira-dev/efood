@@ -1,10 +1,8 @@
 import styled from 'styled-components'
 
-import fundo from '../../assets/images/macarrao2.png'
 import { cores } from '../../styles'
 
 export const Banner = styled.section`
-  background-image: url(${fundo});
   background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 56px;

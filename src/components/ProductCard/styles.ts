@@ -16,13 +16,14 @@ export const Card = styled.div`
   }
 
   img {
+    max-height: 280px;
     width: 100%;
+    object-fit: cover;
   }
 
   p {
     font-size: 14px;
-    line-height: 22px;
-    margin-bottom: 16px;
+    line-height: 16px;
   }
 `
 
@@ -58,6 +59,7 @@ export const Botao = styled.button`
   margin: none;
   border: none;
   padding: 4px 6px;
+  margin-top: 16px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
