@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import Cardrestaurante from '../CardRestaurantes'
 
-import { Section } from './styles'
+import { Section, Modal } from './styles'
 import { useEffect, useState } from 'react'
 import { Cardapio } from '../Main'
 
@@ -33,6 +33,18 @@ const MainRestaurantes = () => {
               nome={prato.nome}
               descricao={prato.descricao}
             />
+            <Modal>
+              <div className="modalBody">
+                <img src={prato.foto} alt="Foto do prato" />
+                <div className="modalInfo">
+                  <h4>{prato.nome}</h4>
+                  <p>{prato.descricao}</p>
+                  <br />
+                  <p>{prato.porcao}</p>
+                  <button>Adicionar ao carrinho - R$ {prato.preco}</button>
+                </div>
+              </div>
+            </Modal>
           </li>
         ))}
       </ul>
