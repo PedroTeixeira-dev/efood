@@ -1,12 +1,19 @@
 import { useParams } from 'react-router-dom'
-import Cardrestaurante from '../CardRestaurantes'
 
 import { Section, Modal } from './styles'
 import { useEffect, useState } from 'react'
 import { Cardapio } from '../Main'
+import { Card } from '../CardRestaurantes/styles'
 
 const MainRestaurantes = () => {
   const { id } = useParams()
+
+  const [modalAberta, setModalAberta] = useState(false)
+  const [modalFoto, setModalFoto] = useState('')
+  const [modalNome, setModalNome] = useState('')
+  const [modalDescricao, setModalDescricao] = useState('')
+  const [modalPorcao, setModalPorcao] = useState('')
+  const [modalPreco, setModalPreco] = useState('')
 
   const [cardapio, setCardapio] = useState<Cardapio[]>([])
 
@@ -28,20 +35,35 @@ const MainRestaurantes = () => {
       <ul>
         {cardapio.map((prato) => (
           <li key={prato.id}>
-            <Cardrestaurante
-              imagem={prato.foto}
-              nome={prato.nome}
-              descricao={prato.descricao}
-            />
-            <Modal>
+            <Card>
+              <img src={prato.foto} alt="pizza" />
+              <h3>{prato.nome}</h3>
+              <p>{prato.descricao}</p>
+              <button
+                onClick={() => {
+                  setModalAberta(true)
+                  setModalFoto(prato.foto)
+                  setModalNome(prato.nome)
+                  setModalDescricao(prato.descricao)
+                  setModalPorcao(prato.porcao)
+                  setModalPreco('')
+                }}
+              >
+                Adicionar ao carrinho
+              </button>
+            </Card>
+            <Modal
+              onClick={() => setModalAberta(false)}
+              className={modalAberta ? 'visivel' : ''}
+            >
               <div className="modalBody">
-                <img src={prato.foto} alt="Foto do prato" />
+                <img src={modalFoto} alt="Foto do prato" />
                 <div className="modalInfo">
-                  <h4>{prato.nome}</h4>
-                  <p>{prato.descricao}</p>
+                  <h4>{modalNome}</h4>
+                  <p>{modalDescricao}</p>
                   <br />
-                  <p>{prato.porcao}</p>
-                  <button>Adicionar ao carrinho - R$ {prato.preco}</button>
+                  <p>{modalPorcao}</p>
+                  <button>Adicionar ao carrinho - R$ {modalPreco}</button>
                 </div>
               </div>
             </Modal>

@@ -24,11 +24,15 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.73);
-  position: absolute;
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
   top: 0;
   left: 0;
   display: none;
+
+  &.visivel {
+    display: flex;
+  }
 
   .modalBody {
     display: flex;
@@ -38,11 +42,13 @@ export const Modal = styled.div`
     height: 344px;
     background-color: #e66767;
     padding: 32px;
+    z-index: 2;
 
     img {
       width: 280px;
       height: 280px;
       margin-right: 24px;
+      object-fit: fill;
     }
 
     .modalInfo {
@@ -57,12 +63,14 @@ export const Modal = styled.div`
         line-height: 21px;
         font-weight: bold;
         margin-bottom: 16px;
+        color: #ffebd9;
       }
 
       p {
         font-size: 14px;
         line-height: 22px;
         margin-bottom: 16px;
+        color: #ffebd9;
       }
 
       button {
@@ -70,6 +78,7 @@ export const Modal = styled.div`
         height: 24px;
         background-color: #ffebd9;
         border: none;
+        cursor: pointer;
 
         font-size: 14px;
         color: #e66767;
