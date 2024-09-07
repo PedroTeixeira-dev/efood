@@ -4,6 +4,7 @@ import EstiloGlobal from './styles'
 
 import Footer from './components/Footer'
 import Rotas from './routes'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <EstiloGlobal />
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </>
   )
