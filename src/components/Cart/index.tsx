@@ -1,34 +1,49 @@
 import { CartContainer, Overlay, Sidebar, Price } from './style'
 
 import pizza from '../../assets/images/pizza.png'
-import { Botao } from '../ProductCard/styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+
+import { close, remove } from '../../store/reducers/cart'
 
 const Cart = () => {
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
+
+  const dispatch = useDispatch()
+
+  const closeCart = () => {
+    dispatch(close())
+  }
+
+  const getTotalPrice = () => {
+    return items.reduce((acumulador, valorAtual) => {
+      return (acumulador += valorAtual.preco)
+    }, 0)
+  }
+
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
+  }
+
   return (
-    <CartContainer>
-      <Overlay />
+    <CartContainer className={isOpen ? 'is-open' : ''}>
+      <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
-          <li>
-            <img src={pizza} />
-            <div>
-              <h3>Pizza Marguerita</h3>
-              <h4> R$ 60,90</h4>
-            </div>
-            <button />
-          </li>
-          <li>
-            <img src={pizza} />
-            <div>
-              <h3>Pizza Marguerita</h3>
-              <h4> R$ 60,90</h4>
-            </div>
-            <button />
-          </li>
+          {items.map((item) => (
+            <li key={item.id}>
+              <img src={item.foto} />
+              <div>
+                <h3>{item.nome}</h3>
+                <h4> R$ {item.preco}</h4>
+              </div>
+              <button onClick={() => removeItem(item.id)} />
+            </li>
+          ))}
         </ul>
         <Price>
           <p>Valor Total</p>
-          <p>R$ 80,00</p>
+          <p>R$ {getTotalPrice().toFixed(2)}</p>
         </Price>
         <button className="EntregaBtn">Continuar com a entrega</button>
       </Sidebar>

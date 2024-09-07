@@ -4,6 +4,8 @@ import { Section, Modal } from './styles'
 import { useEffect, useState } from 'react'
 import { Cardapio } from '../Main'
 import { Card } from '../CardRestaurantes/styles'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
 
 const MainRestaurantes = () => {
   const { id } = useParams()
@@ -13,7 +15,8 @@ const MainRestaurantes = () => {
   const [modalNome, setModalNome] = useState('')
   const [modalDescricao, setModalDescricao] = useState('')
   const [modalPorcao, setModalPorcao] = useState('')
-  const [modalPreco, setModalPreco] = useState('')
+  const [modalPreco, setModalPreco] = useState(0)
+  const [modalId, setModalId] = useState(0)
 
   const [cardapio, setCardapio] = useState<Cardapio[]>([])
 
@@ -21,13 +24,27 @@ const MainRestaurantes = () => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.cardapio)
         setCardapio(res.cardapio)
       })
   }, [id])
 
-  if (!cardapio) {
-    return <div>Carregando...</div>
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(
+      add({
+        foto: modalFoto,
+        preco: modalPreco,
+        id: modalId,
+        nome: modalNome,
+        descricao: modalDescricao,
+        porcao: modalDescricao
+      })
+    )
+
+    if (!cardapio) {
+      return <div>Carregando...</div>
+    }
   }
 
   return (
@@ -46,7 +63,8 @@ const MainRestaurantes = () => {
                   setModalNome(prato.nome)
                   setModalDescricao(prato.descricao)
                   setModalPorcao(prato.porcao)
-                  setModalPreco('')
+                  setModalPreco(prato.preco)
+                  setModalId(prato.id)
                 }}
               >
                 Adicionar ao carrinho
@@ -63,7 +81,9 @@ const MainRestaurantes = () => {
                   <p>{modalDescricao}</p>
                   <br />
                   <p>{modalPorcao}</p>
-                  <button>Adicionar ao carrinho - R$ {modalPreco}</button>
+                  <button onClick={addToCart}>
+                    Adicionar ao carrinho - R$ {modalPreco}
+                  </button>
                 </div>
               </div>
             </Modal>
