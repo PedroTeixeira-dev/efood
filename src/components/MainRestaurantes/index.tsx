@@ -18,6 +18,13 @@ const MainRestaurantes = () => {
   const [modalPreco, setModalPreco] = useState(0)
   const [modalId, setModalId] = useState(0)
 
+  function formatToCurrency(value: number) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value)
+  }
+
   const [cardapio, setCardapio] = useState<Cardapio[]>([])
 
   useEffect(() => {
@@ -82,7 +89,7 @@ const MainRestaurantes = () => {
                   <br />
                   <p>{modalPorcao}</p>
                   <button onClick={addToCart}>
-                    Adicionar ao carrinho - R$ {modalPreco}
+                    Adicionar ao carrinho - {formatToCurrency(modalPreco)}
                   </button>
                 </div>
               </div>

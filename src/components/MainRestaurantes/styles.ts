@@ -48,7 +48,7 @@ export const Modal = styled.div`
       width: 280px;
       height: 280px;
       margin-right: 24px;
-      object-fit: fill;
+      object-fit: cover;
     }
 
     .modalInfo {
@@ -74,15 +74,16 @@ export const Modal = styled.div`
       }
 
       button {
-        width: 218px;
+        width: 240px;
         height: 24px;
         background-color: #ffebd9;
         border: none;
         cursor: pointer;
-
         font-size: 14px;
         color: #e66767;
         font-weight: bold;
+        padding-right: 8px;
+        padding-left: 8px;
       }
     }
   }

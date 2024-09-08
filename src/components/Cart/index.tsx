@@ -25,6 +25,13 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
+  function formatToCurrency(value: number) {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(value)
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
@@ -35,7 +42,7 @@ const Cart = () => {
               <img src={item.foto} />
               <div>
                 <h3>{item.nome}</h3>
-                <h4> R$ {item.preco}</h4>
+                <h4> {formatToCurrency(item.preco)}</h4>
               </div>
               <button onClick={() => removeItem(item.id)} />
             </li>
@@ -43,7 +50,7 @@ const Cart = () => {
         </ul>
         <Price>
           <p>Valor Total</p>
-          <p>R$ {getTotalPrice().toFixed(2)}</p>
+          <p>R$ {formatToCurrency(getTotalPrice())}</p>
         </Price>
         <button className="EntregaBtn">Continuar com a entrega</button>
       </Sidebar>
