@@ -76,6 +76,7 @@ export const Sidebar = styled.aside`
       width: 16px;
       background-color: transparent;
       border: none;
+      cursor: pointer;
     }
   }
 `

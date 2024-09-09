@@ -7,6 +7,11 @@ export const cores = {
   brancoMaisEscuro: '#FFF8F2'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
+}
+
 const EstiloGlobal = createGlobalStyle`
  * {
   padding: 0;
@@ -25,6 +30,10 @@ const EstiloGlobal = createGlobalStyle`
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width:${breakpoints.desktop} ) {
+    max-width: 90%;
+  }
  }
 
  body {

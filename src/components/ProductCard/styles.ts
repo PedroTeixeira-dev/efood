@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.div`
   width: 472px;
@@ -9,6 +9,10 @@ export const Card = styled.div`
   color: ${cores.laranja};
   height: 100%;
   position: relative;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 360px;
+  }
 
   h3 {
     font-size: 18px;

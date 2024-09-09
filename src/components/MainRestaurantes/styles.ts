@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { breakpoints } from '../../styles'
 
 export const Section = styled.section`
   margin-top: 56px;
@@ -9,11 +10,24 @@ export const Section = styled.section`
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 32px;
     row-gap: 32px;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      grid-template-columns: 1fr;
+    }
   }
 
   li {
     list-style: none;
     text-decoration: none;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      justify-content: center;
+    }
   }
 `
 
@@ -36,6 +50,7 @@ export const Modal = styled.div`
 
   .modalBody {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 1024px;
@@ -44,11 +59,22 @@ export const Modal = styled.div`
     padding: 32px;
     z-index: 2;
 
+    @media (max-width: ${breakpoints.tablet}) {
+      height: 80%;
+      width: 80%;
+      padding: 16px;
+      border-radius: 16px;
+    }
+
     img {
       width: 280px;
       height: 280px;
       margin-right: 24px;
       object-fit: cover;
+
+      @media (max-width: ${breakpoints.tablet}) {
+        margin-bottom: 8px;
+      }
     }
 
     .modalInfo {
@@ -74,7 +100,7 @@ export const Modal = styled.div`
       }
 
       button {
-        width: 240px;
+        width: 260px;
         height: 24px;
         background-color: #ffebd9;
         border: none;

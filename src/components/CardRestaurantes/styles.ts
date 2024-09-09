@@ -1,14 +1,18 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.div`
   display: block;
   background-color: ${cores.laranja};
   padding: 8px;
-  width: 320px;
+  width: 260px;
   height: 100%;
   color: ${cores.bege};
   position: relative;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 260px;
+  }
 
   img {
     width: 100%;
