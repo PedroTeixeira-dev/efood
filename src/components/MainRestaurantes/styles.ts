@@ -50,7 +50,7 @@ export const Modal = styled.div`
 
   .modalBody {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     max-width: 1024px;
@@ -64,6 +64,11 @@ export const Modal = styled.div`
       width: 80%;
       padding: 16px;
       border-radius: 16px;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      display: flex;
+      flex-direction: column;
     }
 
     img {
